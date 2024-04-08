@@ -1,0 +1,19 @@
+{
+  "name": "blog-genie",
+  "version": "1.0.0",
+  "description": "docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama ## Install the llama2 model         docker exec -it ollama ollama run llama2",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/community": "^0.0.44",
+    "axios": "^1.6.8",
+    "express": "^4.19.2"
+  }
+}
