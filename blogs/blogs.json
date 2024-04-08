@@ -1,0 +1,629 @@
+{
+  "kind": "blogger#blogList",
+  "items": [
+    {
+      "kind": "blogger#blog",
+      "id": "8809018456771626557",
+      "status": "LIVE",
+      "name": "Blog",
+      "description": "",
+      "published": "2013-06-16T23:04:33-07:00",
+      "updated": "2024-04-08T09:05:29-07:00",
+      "url": "http://myblogepage.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/8809018456771626557",
+      "posts": {
+        "totalItems": 3197,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/8809018456771626557/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/8809018456771626557/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "1891274754922143433",
+      "status": "LIVE",
+      "name": "My LinkedIn Posting ",
+      "description": "",
+      "published": "2019-03-20T02:03:35-07:00",
+      "updated": "2024-03-27T16:16:25-07:00",
+      "url": "http://mylinkedinposting.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1891274754922143433",
+      "posts": {
+        "totalItems": 1219,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1891274754922143433/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1891274754922143433/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "8666202712294103802",
+      "status": "LIVE",
+      "name": "Emails (Others)",
+      "description": "",
+      "published": "2013-05-30T20:18:49-07:00",
+      "updated": "2024-04-07T05:01:38-07:00",
+      "url": "http://emailothers.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/8666202712294103802",
+      "posts": {
+        "totalItems": 8973,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/8666202712294103802/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/8666202712294103802/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "1020893381273025449",
+      "status": "LIVE",
+      "name": "Poems (Gujarati)",
+      "description": "",
+      "published": "2013-06-19T02:53:00-07:00",
+      "updated": "2024-03-26T23:37:14-07:00",
+      "url": "http://hcpspoems.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1020893381273025449",
+      "posts": {
+        "totalItems": 472,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1020893381273025449/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1020893381273025449/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "1472784192955408515",
+      "status": "LIVE",
+      "name": "Letters to L&amp;T Employee",
+      "description": "",
+      "published": "2013-07-23T03:22:37-07:00",
+      "updated": "2024-04-03T13:05:52-07:00",
+      "url": "http://latterstolntemployee.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1472784192955408515",
+      "posts": {
+        "totalItems": 171,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1472784192955408515/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1472784192955408515/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "7591500251802685985",
+      "status": "LIVE",
+      "name": "Notes",
+      "description": "",
+      "published": "2013-05-30T20:19:27-07:00",
+      "updated": "2024-03-13T09:28:28-07:00",
+      "url": "http://hcpnotes.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7591500251802685985",
+      "posts": {
+        "totalItems": 1488,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7591500251802685985/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7591500251802685985/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "3379459522433673289",
+      "status": "LIVE",
+      "name": "Photos &amp; Videos",
+      "description": "",
+      "published": "2013-05-30T08:00:04-07:00",
+      "updated": "2024-03-30T16:54:56-07:00",
+      "url": "http://hcpphotos.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/3379459522433673289",
+      "posts": {
+        "totalItems": 152,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/3379459522433673289/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/3379459522433673289/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "5613888931363033005",
+      "status": "LIVE",
+      "name": "Poems (English)",
+      "description": "",
+      "published": "2013-08-08T20:44:08-07:00",
+      "updated": "2024-03-13T23:43:47-07:00",
+      "url": "http://poemseng.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5613888931363033005",
+      "posts": {
+        "totalItems": 129,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5613888931363033005/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5613888931363033005/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "7412369652846916382",
+      "status": "LIVE",
+      "name": "Poems (Hindi)",
+      "description": "",
+      "published": "2013-08-08T21:05:06-07:00",
+      "updated": "2024-03-13T23:18:31-07:00",
+      "url": "http://poemshn.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7412369652846916382",
+      "posts": {
+        "totalItems": 399,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7412369652846916382/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7412369652846916382/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "4187859982716704091",
+      "status": "LIVE",
+      "name": "L&amp;T Story ",
+      "description": "",
+      "published": "2015-12-08T03:18:59-08:00",
+      "updated": "2024-03-14T00:51:58-07:00",
+      "url": "http://hcplntstory.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/4187859982716704091",
+      "posts": {
+        "totalItems": 44,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/4187859982716704091/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/4187859982716704091/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "2543078346051482402",
+      "status": "LIVE",
+      "name": "Reports",
+      "description": "",
+      "published": "2014-02-25T00:20:43-08:00",
+      "updated": "2024-03-05T02:36:56-08:00",
+      "url": "http://hcpreports.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2543078346051482402",
+      "posts": {
+        "totalItems": 170,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2543078346051482402/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2543078346051482402/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "3829840057874504715",
+      "status": "LIVE",
+      "name": "My Life Travel",
+      "description": "",
+      "published": "2018-11-11T20:30:40-08:00",
+      "updated": "2024-03-14T00:44:47-07:00",
+      "url": "http://myliftravel.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/3829840057874504715",
+      "posts": {
+        "totalItems": 2,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/3829840057874504715/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/3829840057874504715/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "7450996930149923775",
+      "status": "LIVE",
+      "name": "Diary",
+      "description": "",
+      "published": "2013-05-30T08:00:35-07:00",
+      "updated": "2024-03-13T13:31:47-07:00",
+      "url": "http://hcpdiary.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7450996930149923775",
+      "posts": {
+        "totalItems": 10,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7450996930149923775/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/7450996930149923775/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "5056393336637253794",
+      "status": "LIVE",
+      "name": "Sweet Memories",
+      "description": "",
+      "published": "2013-05-30T22:56:49-07:00",
+      "updated": "2024-03-05T12:19:10-08:00",
+      "url": "http://hcpsweetmemories.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5056393336637253794",
+      "posts": {
+        "totalItems": 88,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5056393336637253794/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5056393336637253794/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "5207351913239786154",
+      "status": "LIVE",
+      "name": "Thank You",
+      "description": "",
+      "published": "2013-08-14T04:27:58-07:00",
+      "updated": "2024-02-06T21:24:49-08:00",
+      "url": "http://thankyoublg.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5207351913239786154",
+      "posts": {
+        "totalItems": 657,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5207351913239786154/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5207351913239786154/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "2977887643685677140",
+      "status": "LIVE",
+      "name": "Emails (Collegues)",
+      "description": "",
+      "published": "2013-05-30T20:18:22-07:00",
+      "updated": "2024-03-08T15:01:49-08:00",
+      "url": "http://emailcollegues.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2977887643685677140",
+      "posts": {
+        "totalItems": 5,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2977887643685677140/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2977887643685677140/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "2432199596694974247",
+      "status": "LIVE",
+      "name": "Jobs Advt.",
+      "description": "",
+      "published": "2018-12-31T00:37:14-08:00",
+      "updated": "2024-03-19T23:30:23-07:00",
+      "url": "http://jobsadvt.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2432199596694974247",
+      "posts": {
+        "totalItems": 57,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2432199596694974247/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2432199596694974247/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "2370777700130564718",
+      "status": "LIVE",
+      "name": "Home Page / Source Code for Job Portal",
+      "description": "",
+      "published": "2013-05-30T07:58:32-07:00",
+      "updated": "2024-03-12T20:40:32-07:00",
+      "url": "http://www.hemenparekh.in/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2370777700130564718",
+      "posts": {
+        "totalItems": 6,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2370777700130564718/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2370777700130564718/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "2876913081618194560",
+      "status": "LIVE",
+      "name": "Education",
+      "description": "",
+      "published": "2017-04-03T22:46:46-07:00",
+      "updated": "2024-03-19T03:38:27-07:00",
+      "url": "http://educationcertificate.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2876913081618194560",
+      "posts": {
+        "totalItems": 9,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2876913081618194560/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2876913081618194560/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "5110807757713582582",
+      "status": "LIVE",
+      "name": "Dialogue with Authors ",
+      "description": "",
+      "published": "2014-04-16T21:41:59-07:00",
+      "updated": "2024-02-06T21:07:58-08:00",
+      "url": "http://dialoguewithauthors.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5110807757713582582",
+      "posts": {
+        "totalItems": 135,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5110807757713582582/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/5110807757713582582/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "787578312578511220",
+      "status": "LIVE",
+      "name": "E-Mail Database of MPs/ MLAs/ Ministers/ Secretaries",
+      "description": "",
+      "published": "2017-02-20T03:14:26-08:00",
+      "updated": "2023-11-15T05:00:53-08:00",
+      "url": "http://emaildatabaseofmps.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/787578312578511220",
+      "posts": {
+        "totalItems": 10,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/787578312578511220/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/787578312578511220/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "1704798961930901832",
+      "status": "LIVE",
+      "name": "Marketing Communication (Marcom)",
+      "description": "",
+      "published": "2013-07-18T00:04:19-07:00",
+      "updated": "2024-02-19T03:19:06-08:00",
+      "url": "http://marcomhcp.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1704798961930901832",
+      "posts": {
+        "totalItems": 164,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1704798961930901832/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1704798961930901832/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "4212709629630497938",
+      "status": "LIVE",
+      "name": "Family Tree",
+      "description": "",
+      "published": "2014-06-19T21:26:51-07:00",
+      "updated": "2024-03-13T09:38:26-07:00",
+      "url": "http://hcpfamilytree.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/4212709629630497938",
+      "posts": {
+        "totalItems": 1,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/4212709629630497938/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/4212709629630497938/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "6230171031375328382",
+      "status": "LIVE",
+      "name": "Janmakshar",
+      "description": "",
+      "published": "2014-04-09T22:37:46-07:00",
+      "updated": "2024-03-12T21:15:47-07:00",
+      "url": "http://hcpjanmakshar.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/6230171031375328382",
+      "posts": {
+        "totalItems": 2,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/6230171031375328382/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/6230171031375328382/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "1111414216901506235",
+      "status": "LIVE",
+      "name": "ResuMine &amp; ResuSearch",
+      "description": "",
+      "published": "2013-09-03T05:08:33-07:00",
+      "updated": "2024-03-21T19:19:28-07:00",
+      "url": "http://resuminenresusearch.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1111414216901506235",
+      "posts": {
+        "totalItems": 9,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1111414216901506235/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/1111414216901506235/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    },
+    {
+      "kind": "blogger#blog",
+      "id": "2779122175056708942",
+      "status": "LIVE",
+      "name": "Videos",
+      "description": "",
+      "published": "2013-05-30T07:59:35-07:00",
+      "updated": "2024-03-08T12:54:16-08:00",
+      "url": "http://hcpvideo.blogspot.com/",
+      "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2779122175056708942",
+      "posts": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2779122175056708942/posts"
+      },
+      "pages": {
+        "totalItems": 0,
+        "selfLink": "https://www.googleapis.com/blogger/v3/blogs/2779122175056708942/pages"
+      },
+      "locale": {
+        "language": "en",
+        "country": "GB",
+        "variant": ""
+      }
+    }
+  ]
+}
