@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs, { readFileSync } from "node:fs";
 import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
@@ -69,3 +69,6 @@ fetchAllPosts()
   .catch((error) => {
     console.error("Error fetching posts:", error);
   });
+
+const postLinks = JSON.parse(readFileSync("./posts.json", "utf-8"))["links"];
+print(postLinks.length);
