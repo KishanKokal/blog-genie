@@ -11,3 +11,9 @@
 ## Install and run mongodb community server
 
         docker run -d -p 27017:27017 --name mongodb mongodb/mongodb-community-server
+
+## Continue running an exited docker container
+
+        docker ps -a
+
+        docker start <id>
