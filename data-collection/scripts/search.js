@@ -1,14 +1,16 @@
 import { pipeline } from "@xenova/transformers";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
+import axios from "axios";
 dotenv.config();
 
-const link = "https://indiaai.gov.in/article/i-can-do-it-i-will-do-it";
-const loader = new CheerioWebBaseLoader(link);
-const docs = await loader.load();
-console.log(docs[0].pageContent);
-const content = docs[0].pageContent;
+const url =
+  "https://www.ndtv.com/india-news/we-do-not-have-any-regrets-rajnath-singh-on-electoral-bonds-5421803#:~:text=also%20be%20disclosed.%22-,The%20Electoral%20Bond%20Scheme%20was%20a%20way%20for%20political%20parties,stop%20issuing%20Electoral%20Bonds%20immediately.";
+const body = {
+  url: url,
+};
+const data = await axios.post("http://127.0.0.1:8000/api/content", body);
+const content = data.data.content;
 
 const uri = process.env.MONGO_URI;
 const client = await MongoClient.connect(uri);
