@@ -3,4 +3,4 @@ node_modules/
 client_secret_846606185059-unuv688bhjurcff5d10gcppr708q6g49.apps.googleusercontent.com.json
 posts-with-content.json
 posts-with-embeddings.json
-env
+env/
