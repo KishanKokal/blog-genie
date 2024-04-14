@@ -38,7 +38,7 @@ const getSimilarDocuments = async (embedding) => {
           queryVector: embedding,
           path: "content-embeddings",
           numCandidates: 100,
-          limit: 5,
+          limit: 2,
           index: "blogPostsIndex",
         },
       },
