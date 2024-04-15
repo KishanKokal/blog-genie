@@ -4,7 +4,7 @@ import GenerateRouter from "./src/generate/generate.routes.js";
 const app = express();
 
 app.use(express.json());
-app.use("/genie/ollama", GenerateRouter);
+app.use("/genie", GenerateRouter);
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
