@@ -27,8 +27,8 @@ export const generateResponse = async (req, res) => {
   - Extract: Present 3-4 paragraphs extracted from the related blogs for additional context.
   - Comments: Offer commentary on the validity of suggested solutions for the problem.
   - Call to Action: Encourage readers to consider the provided suggestions.
-  - With Regards: Sign off with a personal touch, including contact information [Hemen Parekh, www.hemenparekh.ai].
-  - Relevant Readings: Share links to related documents for further reading. [Pick the links from the Similar Blogs section]
+  - With Regards: Sign off with a personal touch, including contact information [Hemen Parekh, https://www.hemenparekh.ai].
+  - Relevant Readings: Share links to related documents for further reading. [Pick the links from the Similar Blogs section (all)]
   - Comments by ChatGPT: Include comments from ChatGPT on the content.
   
   Article: ${content}
