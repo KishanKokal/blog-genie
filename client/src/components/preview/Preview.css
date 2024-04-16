@@ -1,0 +1,28 @@
+.preview {
+  height: 90vh;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-area {
+  width: 80%;
+  height: 80%;
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 3rem 3rem;
+  overflow-y: scroll;
+  background-color: white;
+  margin-top: 1rem;
+}
+
+.preview * {
+  color: black;
+}
+
+a {
+  color: blue;
+}

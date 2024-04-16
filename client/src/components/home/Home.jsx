@@ -1,10 +1,15 @@
 import "./Home.css";
 
-function Home() {
+function Home({ articleURL, setArticleURL, generateBlog }) {
   return (
     <div className="home">
-      <input className="url-field" type="text" />
-      <button className="button">
+      <input
+        className="url-field"
+        type="text"
+        value={articleURL}
+        onChange={(event) => setArticleURL(event.target.value)}
+      />
+      <button className="button" onClick={generateBlog}>
         <div className="dots_border"></div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
