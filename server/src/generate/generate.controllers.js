@@ -1,4 +1,4 @@
-import { OpenAI } from "@langchain/openai";
+import { OpenAI } from "openai";
 import { OPENAI_API_KEY } from "../../config.js";
 import {
   getContent,
@@ -7,8 +7,6 @@ import {
 } from "./generate.utils.js";
 
 const model = new OpenAI({
-  model: "gpt-3.5-turbo-0125",
-  temperature: 0.7,
   apiKey: OPENAI_API_KEY,
 });
 
@@ -37,7 +35,31 @@ export const generateResponse = async (req, res) => {
   
   Similar Blogs: ${documents}
   `;
-  const response = await model.invoke(prompt);
-  console.log(response);
-  res.json({ response });
+  const stream = await model.chat.completions.create({
+    model: "gpt-3.5-turbo-0125",
+    temperature: 0.7,
+    stream: true,
+    messages: [
+      {
+        role: "system",
+        content:
+          "You are Hemen Parekh's blog assistant, you need to help him write blogs on his behalf. Please provide the complete blog post, do not stop until you reach the end.",
+      },
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+  });
+  res.setHeader("Content-Type", "application/json");
+  for await (const chunk of stream) {
+    process.stdout.write(chunk.choices[0]?.delta?.content || "");
+    res.write(
+      JSON.stringify({
+        message: chunk.choices[0]?.delta?.content || "",
+        done: false,
+      })
+    );
+  }
+  res.end(JSON.stringify({ done: true }));
 };

@@ -45,8 +45,19 @@ export const getSimilarDocuments = async (embedding) => {
       },
     ])
     .toArray();
-
   let similarDocuments = "";
+  let index = 0;
+  for (let doc of documents) {
+    documents[index]["content"] = documents[index]["content"].replace(
+      /►\s*[A-Za-z]+\s*\(\d+\)\s*/g,
+      ""
+    );
+    documents[index]["content"] = documents[index]["content"].replace(
+      /►\s*\d+\s*\(\d+\)\s*/g,
+      ""
+    );
+    index++;
+  }
   for (let doc of documents) {
     similarDocuments +=
       "Link: " +
@@ -56,5 +67,6 @@ export const getSimilarDocuments = async (embedding) => {
       doc.content +
       "\n\n\n<--------------------------End of Document-------------------------->\n\n\n";
   }
+  console.log(similarDocuments);
   return similarDocuments;
 };
