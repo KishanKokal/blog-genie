@@ -65,8 +65,7 @@ export const getSimilarDocuments = async (embedding) => {
       "\n" +
       "Content: " +
       doc.content +
-      "\n\n\n<--------------------------End of Document-------------------------->\n\n\n";
+      "\n\n\n<--------------------------End of Blog-------------------------->\n\n\n";
   }
-  console.log(similarDocuments);
   return similarDocuments;
 };

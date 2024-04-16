@@ -53,7 +53,6 @@ export const generateResponse = async (req, res) => {
   });
   res.setHeader("Content-Type", "application/json");
   for await (const chunk of stream) {
-    process.stdout.write(chunk.choices[0]?.delta?.content || "");
     res.write(
       JSON.stringify({
         message: chunk.choices[0]?.delta?.content || "",
