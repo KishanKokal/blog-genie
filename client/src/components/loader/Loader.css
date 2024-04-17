@@ -9,6 +9,7 @@
   position: relative;
   -webkit-animation: bounce05 var(--duration) linear infinite;
   animation: bounce05 var(--duration) linear infinite;
+  z-index: 1;
 }
 
 .typewriter .slide {

@@ -79,6 +79,7 @@ function App() {
       <header>
         <h1 onClick={goHome}>Blog Genie 📝🧞‍♂️</h1>
       </header>
+      <div className="gradient"></div>
       {showHome && (
         <Home
           articleURL={articleURL}
