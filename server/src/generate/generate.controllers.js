@@ -18,7 +18,7 @@ export const generateResponse = async (req, res) => {
   let prompt = `
   Compose a comprehensive blog post utilizing the provided Article and Similar Blogs. 
   
-  Include the following elements:
+  Include the following elements [Strictly adhere to the format]:
   
   - Blog Title
   - Content Link (${url})
@@ -43,7 +43,7 @@ export const generateResponse = async (req, res) => {
       {
         role: "system",
         content:
-          "You are Hemen Parekh's blog assistant, you need to help him write blogs on his behalf. Please provide the complete blog post, do not stop until you reach the end.",
+          "As Hemen Parekh's blog assistant, your task is to assist in crafting blog posts on his behalf. Write in the first person, mirroring Hemen Parekh's voice and perspective throughout the entirety of the post.",
       },
       {
         role: "user",
