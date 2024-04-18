@@ -18,6 +18,26 @@ function App() {
     setLoading(false);
   };
 
+  const downloadDocument = async () => {
+    const content = { content: blog }; // Adjust content as needed
+    const response = await fetch("http://localhost:3000/genie/download", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    });
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "blog.docx";
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
+
   const generateBlog = () => {
     setLoading(true);
     setShowHome(false);
@@ -52,7 +72,8 @@ function App() {
             let chunks = chunkString.split("}{");
             if (chunks.length === 1) {
               const chunkValue = JSON.parse(chunks[0]);
-              setBlog((prevVal) => prevVal + chunkValue.message);
+              chunkValue.message !== undefined &&
+                setBlog((prevVal) => prevVal + chunkValue.message);
             } else {
               chunks[0] = JSON.parse(chunks[0] + "}");
               chunks[chunks.length - 1] = JSON.parse(
@@ -62,7 +83,8 @@ function App() {
                 chunks[i] = JSON.parse("{" + chunks[i] + "}");
               }
               for (const chunk of chunks) {
-                setBlog((prevVal) => prevVal + chunk.message);
+                chunk.message !== undefined &&
+                  setBlog((prevVal) => prevVal + chunk.message);
               }
             }
           }
@@ -87,7 +109,14 @@ function App() {
           generateBlog={generateBlog}
         />
       )}
-      {showPreview && <Preview blog={blog} loading={loading} />}
+      {showPreview && (
+        <Preview
+          blog={blog}
+          loading={loading}
+          downloadDocument={downloadDocument}
+          goHome={goHome}
+        />
+      )}
     </div>
   );
 }
