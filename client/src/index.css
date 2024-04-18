@@ -31,10 +31,6 @@ header {
     rgb(255, 85, 85) 0px 0px 0px 15px;
 }
 
-header h1 {
-  cursor: pointer;
-}
-
 @keyframes rotate {
   0% {
     transform: rotate(0deg);

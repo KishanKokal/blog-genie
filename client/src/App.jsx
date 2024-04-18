@@ -99,7 +99,7 @@ function App() {
   return (
     <div className="main">
       <header>
-        <h1 onClick={goHome}>Blog Genie 📝🧞‍♂️</h1>
+        <h1>Blog Genie 📝🧞‍♂️</h1>
       </header>
       <div className="gradient"></div>
       {showHome && (
