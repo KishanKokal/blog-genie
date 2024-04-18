@@ -7,6 +7,7 @@ function Home({ articleURL, setArticleURL, generateBlog }) {
         className="url-field"
         type="text"
         value={articleURL}
+        placeholder="Enter article URL here... (e.g. https://example.com/article)"
         onChange={(event) => setArticleURL(event.target.value)}
       />
       <button className="button" onClick={generateBlog}>
