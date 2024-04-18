@@ -5,6 +5,7 @@ import {
   generateEmbedding,
   getSimilarDocuments,
 } from "./generate.utils.js";
+import { md2docx } from "@adobe/helix-md2docx";
 
 const model = new OpenAI({
   apiKey: OPENAI_API_KEY,
@@ -61,4 +62,18 @@ export const generateResponse = async (req, res) => {
     );
   }
   res.end(JSON.stringify({ done: true }));
+};
+
+export const downloadDocument = async (req, res) => {
+  const content = req.body.content;
+  const docxBuffer = await md2docx(content);
+
+  res.set({
+    "Content-Type":
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "Content-Disposition": "attachment; filename=blog.docx",
+    "Content-Length": docxBuffer.length,
+  });
+
+  res.send(docxBuffer);
 };
