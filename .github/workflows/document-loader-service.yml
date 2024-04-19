@@ -14,10 +14,7 @@ jobs:
 
       - name: Stop running container (if any)
         run: |
-          CONTAINER_ID=$(docker ps -q --filter ancestor=document-loader-service)
-          if [ ! -z "$CONTAINER_ID" ]; then
-            docker stop --time 30 $CONTAINER_ID
-          fi
+          docker stop $(docker ps -q --filter ancestor=document-loader-service)
 
       - name: Build and run Document Loader Service
         run: |
