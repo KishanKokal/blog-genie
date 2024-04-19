@@ -2,8 +2,7 @@ import "./index.css";
 import Home from "./components/home/Home.jsx";
 import Preview from "./components/preview/Preview.jsx";
 import { useState } from "react";
-import { Alert, AlertTitle, IconButton, Collapse } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import { Alert, AlertTitle, Collapse } from "@mui/material";
 
 const GENERATE_URL = import.meta.env.VITE_GENERATE_URL;
 const DOWNLOAD_URL = import.meta.env.VITE_DOWNLOAD_URL;
