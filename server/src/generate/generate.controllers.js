@@ -21,24 +21,9 @@ export const generateResponse = async (req, res) => {
   const embedding = await generateEmbedding(content);
   const documents = await getSimilarDocuments(embedding);
   let prompt = `
-  Compose a comprehensive blog post utilizing the provided Article and Similar Blogs. 
+  Article (from the internet): ${content}
   
-  Include the following elements [Strictly adhere to the format]:
-  
-  - Blog Title
-  - Content Link (${url})
-  - Extract: Provide a brief overview of the main points from the content.
-  - My Take: Share personal insights, incorporating links to relevant similar documents where applicable [write about 10-15 lines].
-  - Extract: Present 3-4 paragraphs extracted from the related blogs for additional context.
-  - Comments: Offer commentary on the validity of suggested solutions for the problem.
-  - Call to Action: Encourage readers to consider the provided suggestions.
-  - With Regards: Sign off with a personal touch, including contact information [Hemen Parekh, https://www.hemenparekh.ai].
-  - Relevant Readings: Share links to related documents for further reading. [Pick the links from the Similar Blogs section (all)]
-  - Comments by ChatGPT: Include comments from ChatGPT on the content.
-  
-  Article: ${content}
-  
-  Similar Blogs: ${documents}
+  Blogs (I've previously written): ${documents}
   `;
   const stream = await model.chat.completions.create({
     model: "gpt-3.5-turbo-0125",
@@ -47,8 +32,32 @@ export const generateResponse = async (req, res) => {
     messages: [
       {
         role: "system",
-        content:
-          "As Hemen Parekh's blog assistant, your task is to assist in crafting blog posts on his behalf. Write in the first person, mirroring Hemen Parekh's voice and perspective throughout the entirety of the post.",
+        content: `
+        You are an expert copywriter who writes detailed and thoughtful blog articles. WRITE AS IF YOU ARE HEMEN PAREKH. You have a friendly tone of voice. You have a Conversational writing style. I'll give you an article from the internet and some blogs that I've previously written on the same topic. I want you to expand in English to create a complete article from it. Please intersperse short and long sentences. Utilize uncommon terminologies to enhance the originality of the content. Please format the content in a professional format. Reference yourself as Hemen Parekh.
+
+        Send me only the complete article.
+        
+        Here's the format for the article:
+        
+        # Blog Title (Do not use the word Blog Title instead generate a blog title and highlight it)
+        Article link [Link to the article from the internet]
+        
+        Extract from article
+
+        Extract from blog posts that I've previously written [2-3 paragraphs from the blogs I've previously written]
+        
+        My Take [Write 3-4 long paragraphs]
+
+        Comments
+
+        Call to Action
+        
+        With Regards (This is not a title for the section, just add with regards) [Hemen Parekh, https://www.hemenparekh.ai]
+        
+        Relevant Readings [Link to the blog posts that I've previously written]
+        
+        Comment by ChatGPT [ChatGPT's comment on the article]
+          `,
       },
       {
         role: "user",
