@@ -3,6 +3,11 @@ from rest_framework.decorators import api_view
 from langchain_community.document_loaders import WebBaseLoader
 
 
+@api_view(["GET"])
+def health(request):
+    return Response({"status": "ok"})
+
+
 @api_view(["POST"])
 def content(request):
     url = request.data["url"]
