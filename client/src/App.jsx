@@ -20,7 +20,7 @@ function App() {
 
   const downloadDocument = async () => {
     const content = { content: blog }; // Adjust content as needed
-    const response = await fetch("http://localhost:3000/genie/download", {
+    const response = await fetch("https://api.hemenparekh.ai/genie/download", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ function App() {
     setShowHome(false);
     setShowPreview(true);
 
-    fetch("http://216.10.243.37:3000/genie/generate", {
+    fetch("https://api.hemenparekh.ai/genie/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
