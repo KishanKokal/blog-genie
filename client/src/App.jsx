@@ -3,6 +3,9 @@ import Home from "./components/home/Home.jsx";
 import Preview from "./components/preview/Preview.jsx";
 import { useState } from "react";
 
+const GENERATE_URL = import.meta.env.VITE_GENERATE_URL;
+const DOWNLOAD_URL = import.meta.env.VITE_DOWNLOAD_URL;
+
 function App() {
   const [showHome, setShowHome] = useState(true);
   const [showPreview, setShowPreview] = useState(false);
@@ -20,7 +23,7 @@ function App() {
 
   const downloadDocument = async () => {
     const content = { content: blog }; // Adjust content as needed
-    const response = await fetch("https://api.hemenparekh.ai/genie/download", {
+    const response = await fetch(DOWNLOAD_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +46,7 @@ function App() {
     setShowHome(false);
     setShowPreview(true);
 
-    fetch("https://api.hemenparekh.ai/genie/generate", {
+    fetch(GENERATE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
