@@ -21,6 +21,7 @@
 }
 
 header {
+  position: relative;
   height: 10vh;
   width: 100%;
   display: flex;
@@ -53,7 +54,17 @@ header {
     hsl(158, 82%, 57%, 85%),
     hsl(252, 82%, 57%, 85%)
   );
-  z-index: 1;
+  z-index: 0;
   animation: rotate var(--speed) var(--easing) alternate infinite;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+header .collapse {
+  position: absolute;
+  top: 128px;
+  z-index: 1;
+}
+
+.collapse .alert {
+  background-color: red;
 }

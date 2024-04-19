@@ -2,6 +2,8 @@ import "./index.css";
 import Home from "./components/home/Home.jsx";
 import Preview from "./components/preview/Preview.jsx";
 import { useState } from "react";
+import { Alert, AlertTitle, IconButton, Collapse } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const GENERATE_URL = import.meta.env.VITE_GENERATE_URL;
 const DOWNLOAD_URL = import.meta.env.VITE_DOWNLOAD_URL;
@@ -12,6 +14,7 @@ function App() {
   const [blog, setBlog] = useState("");
   const [articleURL, setArticleURL] = useState("");
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const goHome = () => {
     setShowHome(true);
@@ -96,6 +99,13 @@ function App() {
       })
       .catch((error) => {
         console.error("Error:", error);
+        setLoading(false);
+        setShowHome(true);
+        setShowPreview(false);
+        setOpen(true);
+        setTimeout(() => {
+          setOpen(false);
+        }, 5000);
       });
   };
 
@@ -103,6 +113,14 @@ function App() {
     <div className="main">
       <header>
         <h1>Blog Genie 📝🧞‍♂️</h1>
+        <Collapse in={open} className="collapse">
+          <Alert severity="error" className="alert" sx={{ mb: 2 }}>
+            <AlertTitle>
+              An error occurred while processing the article
+            </AlertTitle>
+            Please attempt again or select a different article.
+          </Alert>
+        </Collapse>
       </header>
       <div className="gradient"></div>
       {showHome && (
