@@ -1,14 +1,12 @@
 import axios from "axios";
 import { client } from "../../config.js";
 import { pipeline } from "@xenova/transformers";
+import { DOCUMENT_LOADER_URL } from "../../config.js";
 
 export const getContent = async (link) => {
-  const { data } = await axios.post(
-    "https://api.hemenparekh.ai/document-loader/content",
-    {
-      url: link,
-    }
-  );
+  const { data } = await axios.post(DOCUMENT_LOADER_URL, {
+    url: link,
+  });
   return data.content;
 };
 

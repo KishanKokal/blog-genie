@@ -12,6 +12,7 @@ jobs:
     env:
       MONGO_URI: ${{ secrets.MONGO_URI }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      DOCUMENT_LOADER_URL: ${{ secrets.DOCUMENT_LOADER_URL }}
 
     steps:
       - name: Checkout code
@@ -30,4 +31,4 @@ jobs:
         run: |
           cd server
           docker build -t blog-genie-service .
-          docker run -d -p 3000:3000 -e MONGO_URI="${MONGO_URI}" -e OPENAI_API_KEY="${OPENAI_API_KEY}" blog-genie-service
+          docker run -d -p 3000:3000 -e MONGO_URI="${MONGO_URI}" -e OPENAI_API_KEY="${OPENAI_API_KEY}" -e DOCUMENT_LOADER_URL="${DOCUMENT_LOADER_URL}" blog-genie-service
