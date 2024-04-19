@@ -14,7 +14,12 @@ jobs:
 
       - name: Stop running container (if any)
         run: |
-          docker stop $(docker ps -q --filter ancestor=document-loader-service)
+          CONTAINERS=$(docker ps -q --filter "publish=8000")
+          if [ -n "$CONTAINERS" ]; then
+              docker stop $CONTAINERS
+          else
+              echo "No containers found with ancestor document-loader-service."
+          fi
 
       - name: Build and run Document Loader Service
         run: |
