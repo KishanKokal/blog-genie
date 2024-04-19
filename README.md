@@ -4,9 +4,9 @@
 
         cd document-loader-service/service
         docker build -t document-loader-service .
-        docker run -d -p 8000:8000 --name document-loader-service document-loader-service
+        docker run -d -p 8000:8000 document-loader-service
 
 ## Run the express server
 
-        cd server
-        npm run dev
+        docker build -t blog-genie-service .
+        docker run -d -p 3000:3000 blog-genie-service

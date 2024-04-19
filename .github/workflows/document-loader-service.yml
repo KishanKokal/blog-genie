@@ -1,0 +1,19 @@
+name: Document Loader Service
+
+on:
+  push:
+    paths:
+      - "document-loader-service/**"
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and run Document Loader Service
+        run: |
+          cd document-loader-service/service
+          docker build -t document-loader-service .
+          docker run -d -p 8000:8000 document-loader-service

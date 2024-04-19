@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon index.js",
+    "start": "pm2 start index.js --name blog-genie --watch --no-daemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "express": "^4.19.2",
     "mongodb": "^6.5.0",
     "morgan": "^1.10.0",
-    "openai": "^4.35.0"
+    "openai": "^4.35.0",
+    "pm2": "^5.3.1"
   }
 }
