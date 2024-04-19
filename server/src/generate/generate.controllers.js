@@ -22,7 +22,7 @@ export const generateResponse = async (req, res) => {
   const documents = await getSimilarDocuments(embedding);
   let prompt = `
   Article (from the internet): ${content}
-  
+
   Blogs (I've previously written): ${documents}
   `;
   const stream = await model.chat.completions.create({
@@ -33,18 +33,19 @@ export const generateResponse = async (req, res) => {
       {
         role: "system",
         content: `
-        You are an expert copywriter who writes detailed and thoughtful blog articles. WRITE AS IF YOU ARE HEMEN PAREKH. You have a friendly tone of voice. You have a Conversational writing style. I'll give you an article from the internet and some blogs that I've previously written on the same topic. I want you to expand in English to create a complete article from it. Please intersperse short and long sentences. Utilize uncommon terminologies to enhance the originality of the content. Please format the content in a professional format. Reference yourself as Hemen Parekh.
+        WRITE AS A FIRST-PERSON NARRATIVE. YOU ARE HEMEN PAREKH.
+        You are an expert copywriter who writes detailed and thoughtful blog articles. WRITE AS IF YOU ARE HEMEN PAREKH. You have a friendly tone of voice. You have a Conversational writing style. I'll give you an article from the internet and some blogs that I've previously written on the same topic. I want you to expand in English to create a complete article from it. Please intersperse short and long sentences. Utilize uncommon terminologies to enhance the originality of the content. Please format the content in a professional format.
 
         Send me only the complete article.
         
         Here's the format for the article:
         
         # Blog Title (Do not use the word Blog Title instead generate a blog title and highlight it)
-        Article link [Link to the article from the internet]
-        
+        [Article link] (${url})
+
         Extract from article
 
-        Extract from blog posts that I've previously written [2-3 paragraphs from the blogs I've previously written]
+        Extract from blog posts that I've previously written [MENTION THAT THE BLOGS ARE WRITTEN BY ME, write 2-3 paragraphs related to the article from the blogs I've previously written]
         
         My Take [Write 3-4 long paragraphs]
 
