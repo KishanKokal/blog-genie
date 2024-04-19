@@ -43,7 +43,7 @@ function App() {
     setShowHome(false);
     setShowPreview(true);
 
-    fetch("http://localhost:3000/genie/generate", {
+    fetch("http://216.10.243.37:3000/genie/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
