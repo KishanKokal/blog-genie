@@ -1,0 +1,33 @@
+name: Blog Genie Service
+
+on:
+  push:
+    paths:
+      - "server/**"
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    env:
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Stop running container (if any)
+        run: |
+          CONTAINERS=$(docker ps -q --filter "publish=3000")
+          if [ -n "$CONTAINERS" ]; then
+              docker stop $CONTAINERS
+          else
+              echo "No containers found with ancestor document-loader-service."
+          fi
+
+      - name: Build and run Blog Genie Service
+        run: |
+          cd server
+          docker build -t blog-genie-service .
+          docker run -d -p 3000:3000 -e MONGO_URI="${MONGO_URI}" -e OPENAI_API_KEY="${OPENAI_API_KEY}" blog-genie-service
