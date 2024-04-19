@@ -3,9 +3,12 @@ import { client } from "../../config.js";
 import { pipeline } from "@xenova/transformers";
 
 export const getContent = async (link) => {
-  const { data } = await axios.post("http://localhost:8000/api/content", {
-    url: link,
-  });
+  const { data } = await axios.post(
+    "https://api.hemenparekh.ai/document-loader/content",
+    {
+      url: link,
+    }
+  );
   return data.content;
 };
 
