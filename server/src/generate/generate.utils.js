@@ -4,10 +4,14 @@ import { pipeline } from "@xenova/transformers";
 import { DOCUMENT_LOADER_URL } from "../../config.js";
 
 export const getContent = async (link) => {
-  const { data } = await axios.post(DOCUMENT_LOADER_URL, {
-    url: link,
-  });
-  return data.content;
+  try {
+    const { data } = await axios.post(DOCUMENT_LOADER_URL, {
+      url: link,
+    });
+    return { data: data.content, status: 200 };
+  } catch (error) {
+    return { status: 500 };
+  }
 };
 
 export const generateEmbedding = async (content) => {

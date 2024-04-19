@@ -13,7 +13,11 @@ const model = new OpenAI({
 
 export const generateResponse = async (req, res) => {
   const url = req.body.url;
-  const content = await getContent(url);
+  let content = await getContent(url);
+  if (content.status === 500) {
+    return res.status(400).json({ message: "Error fetching content" });
+  }
+  content = content.data;
   const embedding = await generateEmbedding(content);
   const documents = await getSimilarDocuments(embedding);
   let prompt = `
