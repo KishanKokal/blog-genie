@@ -3,9 +3,12 @@ import Home from "./components/home/Home.jsx";
 import Preview from "./components/preview/Preview.jsx";
 import { useState } from "react";
 import { Alert, AlertTitle, Collapse } from "@mui/material";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
+import Login from "./components/login/Login.jsx";
 
 const GENERATE_URL = import.meta.env.VITE_GENERATE_URL;
 const DOWNLOAD_URL = import.meta.env.VITE_DOWNLOAD_URL;
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 function App() {
   const [showHome, setShowHome] = useState(true);
@@ -109,35 +112,42 @@ function App() {
   };
 
   return (
-    <div className="main">
-      <header>
-        <h1>Blog Genie 📝🧞‍♂️</h1>
-        <Collapse in={open} className="collapse">
-          <Alert severity="error" className="alert" sx={{ mb: 2 }}>
-            <AlertTitle>
-              An error occurred while processing the article
-            </AlertTitle>
-            Please attempt again or select a different article.
-          </Alert>
-        </Collapse>
-      </header>
-      <div className="gradient"></div>
-      {showHome && (
-        <Home
-          articleURL={articleURL}
-          setArticleURL={setArticleURL}
-          generateBlog={generateBlog}
-        />
-      )}
-      {showPreview && (
-        <Preview
-          blog={blog}
-          loading={loading}
-          downloadDocument={downloadDocument}
-          goHome={goHome}
-        />
-      )}
-    </div>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <div className="main">
+        <header>
+          <h1>Blog Genie 📝🧞‍♂️</h1>
+          <Collapse in={open} className="collapse">
+            <Alert severity="error" className="alert" sx={{ mb: 2 }}>
+              <AlertTitle>
+                An error occurred while processing the article
+              </AlertTitle>
+              Please attempt again or select a different article.
+            </Alert>
+          </Collapse>
+        </header>
+        <div className="gradient"></div>
+        <SignedIn>
+          {showHome && (
+            <Home
+              articleURL={articleURL}
+              setArticleURL={setArticleURL}
+              generateBlog={generateBlog}
+            />
+          )}
+          {showPreview && (
+            <Preview
+              blog={blog}
+              loading={loading}
+              downloadDocument={downloadDocument}
+              goHome={goHome}
+            />
+          )}
+        </SignedIn>
+        <SignedOut>
+          <Login />
+        </SignedOut>
+      </div>
+    </ClerkProvider>
   );
 }
 

@@ -21,7 +21,8 @@
 }
 
 header {
-  position: relative;
+  position: absolute;
+  top: 0;
   height: 10vh;
   width: 100%;
   display: flex;
