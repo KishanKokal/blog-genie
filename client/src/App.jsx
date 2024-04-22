@@ -62,7 +62,6 @@ function App() {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
         const reader = response.body.getReader();
 
         async function readStream() {

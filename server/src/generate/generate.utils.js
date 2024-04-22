@@ -8,6 +8,7 @@ export const getContent = async (link) => {
     const { data } = await axios.post(DOCUMENT_LOADER_URL, {
       url: link,
     });
+
     return { data: data.content, status: 200 };
   } catch (error) {
     return { status: 500 };
@@ -19,7 +20,7 @@ export const generateEmbedding = async (content) => {
     "feature-extraction",
     "Xenova/all-MiniLM-L6-v2"
   );
-  
+
   const result = await generateEmbeddings(content, {
     pooling: "mean",
     normalize: true,
