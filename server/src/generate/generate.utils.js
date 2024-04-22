@@ -19,6 +19,7 @@ export const generateEmbedding = async (content) => {
     "feature-extraction",
     "Xenova/all-MiniLM-L6-v2"
   );
+  
   const result = await generateEmbeddings(content, {
     pooling: "mean",
     normalize: true,
