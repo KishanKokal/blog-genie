@@ -14,4 +14,5 @@ def content(request):
     loader = WebBaseLoader(url)
     data = loader.load()
     content = data[0].page_content.replace("\n", " ")
+
     return Response({"content": content})
