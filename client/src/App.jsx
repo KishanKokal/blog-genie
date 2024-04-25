@@ -5,10 +5,12 @@ import { useState } from "react";
 import { Alert, AlertTitle, Collapse } from "@mui/material";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 import Login from "./components/login/Login.jsx";
+import axios from "axios";
 
 const GENERATE_URL = import.meta.env.VITE_GENERATE_URL;
 const DOWNLOAD_URL = import.meta.env.VITE_DOWNLOAD_URL;
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const ARTICLE_CONTENT_URL = import.meta.env.VITE_ARTICLE_CONTENT_URL;
 
 function App() {
   const [showHome, setShowHome] = useState(true);
@@ -17,6 +19,8 @@ function App() {
   const [articleURL, setArticleURL] = useState("");
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [articleContent, setArticleContent] = useState("");
+  const [articleContentLoading, setArticleContentLoading] = useState(false);
 
   const goHome = () => {
     setShowHome(true);
@@ -44,6 +48,33 @@ function App() {
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
+  };
+
+  const showModal = () => {
+    getArticleContent();
+    const dialog = document.querySelector("dialog");
+    dialog.showModal();
+  };
+
+  const hideModal = () => {
+    const dialog = document.querySelector("dialog");
+    dialog.close();
+  };
+
+  const getArticleContent = async () => {
+    setArticleContentLoading(true);
+    try {
+      const data = await axios.post(ARTICLE_CONTENT_URL, { url: articleURL });
+      setArticleContent(data.data.content);
+    } catch {
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 5000);
+      hideModal();
+    } finally {
+      setArticleContentLoading(false);
+    }
   };
 
   const generateBlog = () => {
@@ -113,6 +144,45 @@ function App() {
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <div className="main">
+        <dialog className="modal">
+          <div className="modal-inner-container">
+            <h3>Please verify the content of the article</h3>
+            <p className="note">
+              Note: Please ensure that this accurately reflects the original
+              article. If it doesn't, click 'Cancel'. This will serve as the
+              context for ChatGPT.
+            </p>
+            <div className="context-window">
+              {articleContentLoading ? (
+                <p>Fetching article content...</p>
+              ) : (
+                <p>{articleContent}</p>
+              )}
+            </div>
+            {!articleContentLoading && (
+              <div className="buttons">
+                <button
+                  className="modal-button"
+                  onClick={() => {
+                    generateBlog();
+                    hideModal();
+                  }}
+                >
+                  <p className="modal-button-text">Generate</p>
+                </button>
+                <button
+                  className="modal-button"
+                  onClick={() => {
+                    hideModal();
+                    setArticleURL("");
+                  }}
+                >
+                  <p className="modal-button-text">Cancel</p>
+                </button>
+              </div>
+            )}
+          </div>
+        </dialog>
         <header>
           <h1>Blog Genie 📝🧞‍♂️</h1>
           <Collapse in={open} className="collapse">
@@ -130,7 +200,7 @@ function App() {
             <Home
               articleURL={articleURL}
               setArticleURL={setArticleURL}
-              generateBlog={generateBlog}
+              generateBlog={showModal}
             />
           )}
           {showPreview && (
