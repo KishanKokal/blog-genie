@@ -1,19 +1,17 @@
-import { MongoClient } from "mongodb";
 import fs from "node:fs";
-import dotenv from "dotenv";
-dotenv.config();
 
-const MONGO_URI = process.env.MONGO_URI;
+// const posts1 = JSON.parse(
+//   fs.readFileSync("../data/posts-with-embeddings.json")
+// );
 
-const client = new MongoClient(MONGO_URI, {});
-await client.connect();
-const db = client.db("blog-genie");
-const collection = db.collection("blog-posts");
+// const posts2 = JSON.parse(
+//   fs.readFileSync("../data/posts-with-embeddings-2.json")
+// );
 
-console.log("Fetching data...");
-const posts = await collection.find({}).toArray();
-console.log("Data fetched...");
+// const posts = posts1.concat(posts2);
 
-console.log("Saving file...");
-fs.writeFileSync("../data/posts.json", JSON.stringify(posts));
-console.log("✅Done");
+// fs.writeFileSync("../data/embeddings.json", JSON.stringify(posts));
+
+const posts = JSON.parse(fs.readFileSync("../data/embeddings.json"));
+console.log(posts.length);
+console.log(posts[0]);
