@@ -19,11 +19,13 @@ export const generateResponse = async (req, res) => {
   }
   content = content.data;
   const embedding = await generateEmbedding(content);
-  const documents = await getSimilarDocuments(embedding);
+  const { similarDocuments, linksToDocuments } = await getSimilarDocuments(
+    embedding
+  );
   let prompt = `
   Article (from the internet): ${content}
 
-  Blogs (I've previously written): ${documents}
+  Blogs (I've previously written): ${similarDocuments}
   `;
   const stream = await model.chat.completions.create({
     model: "gpt-3.5-turbo-0125",
@@ -40,24 +42,22 @@ export const generateResponse = async (req, res) => {
         
         Here's the format for the article:
         
-        # Blog Title (Do not use the word Blog Title instead generate a blog title and highlight it)
+        # Blog Title [restrict it to no more than 5 words/ ideally 3 words](Do not use the word Blog Title instead generate a blog title)
         [Article link] (${url})
-
-        Extract from article
-
-        Extract from blog posts that I've previously written [MENTION THAT THE BLOGS ARE WRITTEN BY ME, write 2-3 paragraphs related to the article from the blogs I've previously written]
         
-        My Take [Write 3-4 long paragraphs]
-
-        Comments
-
-        Call to Action
         
+        ## Extract from article (EXTRACT OUT IMPORTANT INFORMATION FROM Article (from the internet))
+        
+        
+        ## My Take [Write 3-4 long paragraphs] [STRICLTLY MENTION THAT THE BLOGS AND ALSO ADD HYPERLINKS (${linksToDocuments}) TO THE BLOGS WRITTEN BY ME](This para starts with ( A ) Name of one ( or more ) of my RELEVANT old blog ( visit here link ) AND right below , some sentences / paras from that OLD BLOG , which REINFORCE my suggestions in respect of the problem expressed in the newspaper article.
+        Idea to be conveyed to the readers is > “ Hey , look at what I thought of / suggested about this problem , 3 / 5 / 7 years ago . I had told you so !  I had seen this coming. I had offered a solution re this 
+
+
+        ## Call to Action
+        Whereas , on many occasions , this may be addressed to citizens at large or a specific group of Professionals such as > Politicians – Economists – Journalists – Scientists etc. , wherever we are able to identify a SPECIFIC authority ( Eg;  MNRE Minister / Commerce Minister ) , or a PERSON ( may be whose name appears in the news article ) , then in such cases, we should SHARPLY address that person.
+        
+
         With Regards (This is not a title for the section, just add with regards) [Hemen Parekh, https://www.hemenparekh.ai]
-        
-        Relevant Readings [Link to the blog posts that I've previously written]
-        
-        Comment by ChatGPT [ChatGPT's comment on the article]
           `,
       },
       {

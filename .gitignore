@@ -5,6 +5,8 @@ posts-with-content.json
 posts-with-embeddings.json
 posts-with-embeddings-2.json
 posts.json
+chunked.json
+chunked-2.json
 embeddings.json
 progress.json
 env/
