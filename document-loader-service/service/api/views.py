@@ -6,7 +6,7 @@ import re
 
 @api_view(["GET"])
 def health(request):
-    return Response({"status": "ok -v2"})
+    return Response({"status": "ok -v3"})
 
 
 @api_view(["POST"])
