@@ -1,7 +1,14 @@
 import axios from "axios";
-import { client } from "../../config.js";
+import { INDEX } from "../../config.js";
 import { pipeline } from "@xenova/transformers";
 import { DOCUMENT_LOADER_URL } from "../../config.js";
+
+export const getSummary = async (content) => {
+  const pipe = await pipeline("summarization");
+  const res = await pipe(content);
+  const summary = res[0]["summary_text"];
+  return summary;
+};
 
 export const getContent = async (link) => {
   try {
@@ -18,50 +25,36 @@ export const getContent = async (link) => {
 export const generateEmbedding = async (content) => {
   const generateEmbeddings = await pipeline(
     "feature-extraction",
-    "Xenova/all-MiniLM-L6-v2"
+    "mixedbread-ai/mxbai-embed-large-v1"
   );
 
   const result = await generateEmbeddings(content, {
     pooling: "mean",
     normalize: true,
   });
-  const embeddingsArray = Object.values(result["data"]);
+
+  const embeddingsArray = result.tolist()[0];
   return embeddingsArray;
 };
 
 export const getSimilarDocuments = async (embedding) => {
-  const db = client.db("blog-genie");
-  const collection = db.collection("blog-posts");
-  const documents = await collection
-    .aggregate([
-      {
-        $vectorSearch: {
-          queryVector: embedding,
-          path: "content-embeddings",
-          numCandidates: 100,
-          limit: 3,
-          index: "blogPostsIndex",
-        },
-      },
-      {
-        $project: {
-          _id: 0,
-          link: 1,
-          content: 1,
-        },
-      },
-    ])
-    .toArray();
+  let response = await INDEX.query({
+    topK: 3,
+    vector: embedding,
+    includeValues: false,
+    includeMetadata: true,
+  });
+  let documents = response.matches;
   let similarDocuments = "";
   let linksToDocuments = [];
   for (let doc of documents) {
-    linksToDocuments.push(doc.link);
+    linksToDocuments.push(doc.metadata.link);
     similarDocuments +=
       "Link: " +
-      doc.link +
+      doc.metadata.link +
       "\n" +
       "Content: " +
-      doc.content +
+      doc.metadata.content +
       "\n\n\n<--------------------------End of Blog-------------------------->\n\n\n";
   }
   return { similarDocuments, linksToDocuments };

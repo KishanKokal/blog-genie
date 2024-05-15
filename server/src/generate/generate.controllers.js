@@ -4,6 +4,7 @@ import {
   getContent,
   generateEmbedding,
   getSimilarDocuments,
+  getSummary,
 } from "./generate.utils.js";
 import { md2docx } from "@adobe/helix-md2docx";
 
@@ -18,6 +19,7 @@ export const generateResponse = async (req, res) => {
     return res.status(400).json({ message: "Error fetching content" });
   }
   content = content.data;
+  content = await getSummary(content);
   const embedding = await generateEmbedding(content);
   const { similarDocuments, linksToDocuments } = await getSimilarDocuments(
     embedding
