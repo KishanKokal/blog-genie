@@ -1,60 +1,67 @@
+import fs from "node:fs";
 import { pipeline } from "@xenova/transformers";
-import { MongoClient } from "mongodb";
+import { Pinecone } from "@pinecone-database/pinecone";
 import dotenv from "dotenv";
-import axios from "axios";
 dotenv.config();
 
-const url =
-  "https://www.ndtv.com/india-news/we-do-not-have-any-regrets-rajnath-singh-on-electoral-bonds-5421803#:~:text=also%20be%20disclosed.%22-,The%20Electoral%20Bond%20Scheme%20was%20a%20way%20for%20political%20parties,stop%20issuing%20Electoral%20Bonds%20immediately.";
-const body = {
-  url: url,
-};
-const data = await axios.post("http://127.0.0.1:8000/api/content", body);
-const content = data.data.content;
+const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
+const pc = new Pinecone({
+  apiKey: PINECONE_API_KEY,
+});
+const index = pc.index("blog-genie");
 
-const uri = process.env.MONGO_URI;
-const client = await MongoClient.connect(uri);
-const db = client.db("blog-genie");
-const collection = db.collection("blog-posts");
+// Function to chunk array into smaller arrays
+function chunkArray(array, chunkSize) {
+  return Array.from(
+    { length: Math.ceil(array.length / chunkSize) },
+    (_, index) => array.slice(index * chunkSize, (index + 1) * chunkSize)
+  );
+}
 
-let generateEmbeddings = await pipeline(
-  "feature-extraction",
-  "Xenova/all-MiniLM-L6-v2"
-);
+// Stream processing function
+async function processDocuments(docs) {
+  const pipe = await pipeline(
+    "feature-extraction",
+    "mixedbread-ai/mxbai-embed-large-v1"
+  );
 
-const getEmbeddings = async (content) => {
-  const result = await generateEmbeddings(content, {
-    pooling: "mean",
-    normalize: true,
-  });
-  return result;
-};
+  let i = 0;
+  const batchSize = 10; // Adjust batch size as needed
+  const chunks = chunkArray(docs, batchSize);
 
-const getSimilarDocuments = async (embedding) => {
-  const documents = await collection
-    .aggregate([
-      {
-        $vectorSearch: {
-          queryVector: embedding,
-          path: "content-embeddings",
-          numCandidates: 100,
-          limit: 2,
-          index: "blogPostsIndex",
-        },
-      },
-      {
-        $project: {
-          _id: 0,
-          link: 1,
-          content: 1,
-        },
-      },
-    ])
-    .toArray();
-  console.log(documents);
-};
+  for (const chunk of chunks) {
+    const embeddings = await Promise.all(
+      chunk.map(async (doc) => {
+        const res = await pipe(doc.content, {
+          pooling: "mean",
+          normalize: true,
+        });
+        return {
+          id: String(i++),
+          values: res.tolist()[0],
+          metadata: { link: doc.link, content: doc.content },
+        };
+      })
+    );
 
-const embedding = await getEmbeddings(content);
-console.log(Object.values(embedding["data"]));
-await getSimilarDocuments(Object.values(embedding["data"]));
-await client.close();
+    await index.upsert(embeddings);
+    console.log(`Processed ${i} documents`);
+  }
+}
+
+async function main() {
+  // Assuming "chunked.json" and "chunked-2.json" are large files, consider streaming them instead of loading into memory
+  const doc1Stream = fs.readFileSync("../data/chunked.json");
+  const doc2Stream = fs.readFileSync("../data/chunked-2.json");
+
+  // Read data from streams and process
+  let docs = [];
+  for await (const chunk of [doc1Stream, doc2Stream]) {
+    const chunkedDocs = JSON.parse(chunk);
+    docs.push(...chunkedDocs);
+  }
+
+  await processDocuments(docs);
+}
+
+main().catch(console.error);

@@ -1,24 +1,41 @@
-import fs from "node:fs";
-import { MongoClient } from "mongodb";
+import { Pinecone } from "@pinecone-database/pinecone";
 import dotenv from "dotenv";
-
+import fs from "node:fs";
 dotenv.config();
 
-const uri = process.env.MONGO_URI;
-let docs = JSON.parse(fs.readFileSync("../data/embeddings.json"));
+const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
+const doc1 = JSON.parse(fs.readFileSync("../data/ollama.json"));
+const doc2 = JSON.parse(fs.readFileSync("../data/ollama-2.json"));
+let docs = doc1.concat(doc2);
 
-const client = new MongoClient(uri);
-await client.connect();
-console.log("Connected to MongoDB");
+const pc = new Pinecone({
+  apiKey: PINECONE_API_KEY,
+});
+const index = pc.index("blog-genie");
 
-const db = client.db("blog-genie");
-const collection = db.collection("blog-posts");
+let i = 0;
+for (const doc of docs) {
+  doc["id"] = String(i++);
+  doc["values"] = doc["content-embeddings"];
+  delete doc["content-embeddings"];
+  doc["metadata"] = { link: doc["link"], content: doc["content"] };
+  delete doc["link"];
+  delete doc["content"];
+}
 
-console.log("Deleting docs...");
-await collection.deleteMany({});
-console.log("Deleted all docs");
+const batchSize = 100;
+let batch = [];
+for (const doc of docs) {
+  batch.push(doc);
+  if (batch.length === batchSize) {
+    await index.upsert(batch);
+    console.log(`Processed ${batch.length} documents.`);
+    batch = [];
+  }
+}
 
-console.log("Storiong new data...");
-await collection.insertMany(docs);
-console.log("Data stored in MongoDB");
-await client.close();
+// Upsert the remaining documents if the batch size doesn't evenly divide the total number of documents
+if (batch.length > 0) {
+  await index.upsert(batch);
+  console.log(`Processed ${batch.length} documents.`);
+}

@@ -1,17 +1,25 @@
+import { Ollama } from "ollama";
+import { pipeline } from "@xenova/transformers";
 import fs from "node:fs";
 
-// const posts1 = JSON.parse(
-//   fs.readFileSync("../data/posts-with-embeddings.json")
-// );
+const ollama = new Ollama();
+const pipe = await pipeline(
+  "feature-extraction",
+  "mixedbread-ai/mxbai-embed-large-v1"
+);
 
-// const posts2 = JSON.parse(
-//   fs.readFileSync("../data/posts-with-embeddings-2.json")
-// );
+const docs = JSON.parse(fs.readFileSync("../data/chunked.json"));
 
-// const posts = posts1.concat(posts2);
+let i = 0;
+for (const doc of docs) {
+  console.log(i++);
+  // const embed1 = await ollama.embeddings({
+  //   model: "mxbai-embed-large",
+  //   prompt: doc.content,
+  // });
 
-// fs.writeFileSync("../data/embeddings.json", JSON.stringify(posts));
-
-const posts = JSON.parse(fs.readFileSync("../data/embeddings.json"));
-console.log(posts.length);
-console.log(posts[0]);
+  const embed2 = await pipe(doc.content, {
+    pooling: "mean",
+    normalize: true,
+  });
+}

@@ -9,4 +9,6 @@ chunked.json
 chunked-2.json
 embeddings.json
 progress.json
+ollama.json
+ollama-2.json
 env/
