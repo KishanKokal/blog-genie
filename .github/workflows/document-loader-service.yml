@@ -1,9 +1,7 @@
 name: Document Loader Service
 
 on:
-  push:
-    paths:
-      - "document-loader-service/**"
+  workflow_dispatch:
 
 jobs:
   build:
