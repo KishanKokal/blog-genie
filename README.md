@@ -2,6 +2,10 @@
 
 This document outlines the necessary steps to set up and run both the backend and frontend components of the application.
 
+## Architecture
+
+![blog-genie-architecture](./blog-genie-architecture.png)
+
 ## Backend Application Setup
 
 ### 1. Build and Run `document-loader-service`
