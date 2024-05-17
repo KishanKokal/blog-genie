@@ -95,5 +95,5 @@ export const downloadDocument = async (req, res) => {
 };
 
 export const healthController = (req, res) => {
-  res.status(200).json({ status: "The server is up and running!" });
+  res.status(200).json({ status: "The server is up and running! -v1" });
 };

@@ -10,9 +10,9 @@ jobs:
     runs-on: self-hosted
 
     env:
-      MONGO_URI: ${{ secrets.MONGO_URI }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       DOCUMENT_LOADER_URL: ${{ secrets.DOCUMENT_LOADER_URL }}
+      PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
 
     steps:
       - name: Checkout code
@@ -31,4 +31,4 @@ jobs:
         run: |
           cd server
           sudo docker build -t blog-genie-service .
-          sudo docker run -d -p 3000:3000 -e MONGO_URI="${MONGO_URI}" -e OPENAI_API_KEY="${OPENAI_API_KEY}" -e DOCUMENT_LOADER_URL="${DOCUMENT_LOADER_URL}" blog-genie-service
+          sudo docker run -d -p 3000:3000 -e PINECONE_API_KEY="${PINECONE_API_KEY}" -e OPENAI_API_KEY="${OPENAI_API_KEY}" -e DOCUMENT_LOADER_URL="${DOCUMENT_LOADER_URL}" blog-genie-service
