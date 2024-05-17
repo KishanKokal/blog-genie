@@ -1,7 +1,9 @@
 name: Document Loader Service
 
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      - "document-loader-service/**"
 
 jobs:
   build:
@@ -14,7 +16,7 @@ jobs:
         run: |
           CONTAINERS=$(docker ps -q --filter "publish=8000")
           if [ -n "$CONTAINERS" ]; then
-              docker stop $CONTAINERS
+              sudo docker stop $CONTAINERS
           else
               echo "No containers found with ancestor document-loader-service."
           fi
@@ -22,5 +24,5 @@ jobs:
       - name: Build and run Document Loader Service
         run: |
           cd document-loader-service/service
-          docker build -t document-loader-service .
-          docker run -d -p 8000:8000 document-loader-service
+          sudo docker build -t document-loader-service .
+          sudo docker run -d -p 8000:8000 document-loader-service

@@ -1,7 +1,9 @@
 name: Blog Genie Service
 
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      - "server/**"
 
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
         run: |
           CONTAINERS=$(docker ps -q --filter "publish=3000")
           if [ -n "$CONTAINERS" ]; then
-              docker stop $CONTAINERS
+              sudo docker stop $CONTAINERS
           else
               echo "No containers found with ancestor document-loader-service."
           fi
@@ -28,5 +30,5 @@ jobs:
       - name: Build and run Blog Genie Service
         run: |
           cd server
-          docker build -t blog-genie-service .
-          docker run -d -p 3000:3000 -e MONGO_URI="${MONGO_URI}" -e OPENAI_API_KEY="${OPENAI_API_KEY}" -e DOCUMENT_LOADER_URL="${DOCUMENT_LOADER_URL}" blog-genie-service
+          sudo docker build -t blog-genie-service .
+          sudo docker run -d -p 3000:3000 -e MONGO_URI="${MONGO_URI}" -e OPENAI_API_KEY="${OPENAI_API_KEY}" -e DOCUMENT_LOADER_URL="${DOCUMENT_LOADER_URL}" blog-genie-service
