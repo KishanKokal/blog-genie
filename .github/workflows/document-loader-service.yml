@@ -14,7 +14,7 @@ jobs:
 
       - name: Stop running container (if any)
         run: |
-          CONTAINERS=$(docker ps -q --filter "publish=8000")
+          CONTAINERS=$(sudo docker ps -q --filter "publish=8000")
           if [ -n "$CONTAINERS" ]; then
               sudo docker stop $CONTAINERS
           else
