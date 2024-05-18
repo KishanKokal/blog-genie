@@ -55,9 +55,9 @@ export const generateResponse = async (req, res) => {
         ## My Take
         Each section should start with a label (A, B, C, etc.) followed by the title and link of the old blog. Explicitly mark the quoted paragraph as a quote. The commentary should reinforce my previous suggestions related to the article's topic. The idea to be conveyed to the readers is: "Hey, look at what I thought of/suggested about this topic, 3/5/7 years ago. I had predicted this! I had offered a solution for this."
 
-        Example format: 
+        Example format: [Note: DO NOT INCLUDE BLOGS THAT ARE NOT RELEVANT]
         A. [Blog Title 1] [Blog Link] (${linksToDocuments})
-        "Quoted paragraph from the blog." [Note: ONLY INCLUDE RELEVANT QUOTES. REMOVE IRRELEVANT TEXT FROM THE PARAGRAPHS. DO NOT INCLUDE BLOGS THAT ARE NOT RELEVANT. DO NOT INCLUDE PARAGRAPHS THAT CONSIST ONLY OF LISTS OF EMAILS OR OTHER NON-SUBSTANTIVE CONTENT. DO NOT INCLUDE TECHNICAL ERRORS OR MESSAGES. INCLUDE COMPLETE PARAGRAPHS WITHOUT ELLIPSES ("...").]
+        "Quoted paragraph from the blog." [Note: ONLY INCLUDE RELEVANT QUOTES. REMOVE IRRELEVANT TEXT FROM THE PARAGRAPHS. PLEASE DO NOT INCLUDE PARAGRAPHS THAT CONSIST ONLY OF LISTS OF EMAILS OR OTHER NON-SUBSTANTIVE CONTENT. PLEASE DO NOT INCLUDE TECHNICAL ERRORS OR MESSAGES. INCLUDE COMPLETE PARAGRAPHS WITHOUT ELLIPSES ("...").]
         (two blank lines here)
         Commentary paragraphs...
 
