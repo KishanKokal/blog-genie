@@ -30,8 +30,7 @@ export const generateResponse = async (req, res) => {
   Blogs (I've previously written): ${similarDocuments}
   `;
   const stream = await model.chat.completions.create({
-    model: "gpt-3.5-turbo-0125",
-    temperature: 0.9,
+    model: "gpt-4.1-mini",
     stream: true,
     messages: [
       {
