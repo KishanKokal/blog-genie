@@ -7,6 +7,7 @@ import {
   getSummary,
 } from "./generate.utils.js";
 import { md2docx } from "@adobe/helix-md2docx";
+import { randomUUID } from "node:crypto";
 
 const model = new OpenAI({
   apiKey: OPENAI_API_KEY,
@@ -79,11 +80,12 @@ export const generateResponse = async (req, res) => {
 export const downloadDocument = async (req, res) => {
   const content = req.body.content;
   const docxBuffer = await md2docx(content);
+  const fileName = randomUUID();
 
   res.set({
     "Content-Type":
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "Content-Disposition": "attachment; filename=blog.docx",
+    "Content-Disposition": `attachment; filename=${fileName}.docx`,
     "Content-Length": docxBuffer.length,
   });
 
