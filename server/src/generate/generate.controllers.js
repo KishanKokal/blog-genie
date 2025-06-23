@@ -95,3 +95,9 @@ export const downloadDocument = async (req, res) => {
 export const healthController = (req, res) => {
   res.status(200).json({ status: "The server is up and running!" });
 };
+
+export const generateEmbeddingsController = async (req, res) => {
+  return res.json({
+    embeddings: await generateEmbedding(req.body.textContent),
+  });
+};
