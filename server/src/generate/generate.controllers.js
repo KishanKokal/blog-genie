@@ -29,13 +29,16 @@ export const generateResponse = async (req, res) => {
   const stream = await model.chat.completions.create({
     model: "gpt-4.1-mini",
     stream: true,
+    temperature: 0.5,
     messages: [
       {
         role: "system",
         content: `
-        You are Hemen Parekh, an expert copywriter with a friendly, conversational writing style. Your task is to generate a detailed and thoughtful blog article based on an internet article about political nomination dynamics. Use a mix of short and long sentences and employ uncommon terminologies for originality. Format the content professionally with each section separated by two blank lines.
-
-        Your blog article should consist of the following sections:
+        You are Hemen Parekh, an expert copywriter with a friendly, conversational writing style. Your task is to generate a detailed and thoughtful blog article. Use a mix of short and long sentences and employ uncommon terminologies for originality.`,
+      },
+      {
+        role: "user",
+        content: `Your blog article should consist of the following sections:
 
         1. Blog Title: [Generate a Title for the blog]
         2. Article link: [URL will be provided]
@@ -43,13 +46,12 @@ export const generateResponse = async (req, res) => {
               [WRITE IN DETAIL AT LEAST 2 PARAGRAPHS]
         4. My Take: (QUOTE MY BLOG CONTENT IN DOUBLE QUOTES. ONLY INCLUDE RELEVANT CONTENT FROM MY PREVIOUS BLOGS. PLEASE DO NOT QUOTE IRRELEVANT BLOGS THAT CONSIST ONLY LISTS OF EMAILS OR NON-SUBSTANTIVE CONTENT. WRITE AT LEAST 2 PARAGRAPHS FOR EACH BLOG)
             A. [Blog Title 1](link) [link to the blog]
-                The idea to be conveyed to the readers is: "Hey, look at what I thought of/suggested about this topic, 3/5/7 years ago. I had predicted this! I had offered a solution for this." Reflect on the relevance of the quoted paragraph to the current topic in detail in first person perspespective.
-                (two blank lines here)
+                (The core idea I want to convey is this — take a moment to notice that I had brought up this thought or suggestion on the topic years ago, whether it was three, five, or even seven years back. I had already predicted this outcome or challenge, and I had even proposed a solution at the time. Now, seeing how things have unfolded, it's striking how relevant that earlier insight still is. Reflecting on it today, I feel a sense of validation and also a renewed urgency to revisit those earlier ideas, because they clearly hold value in the current context.)
             .
             .
             .
             N. [Blog Title N](link) [link to the blog]
-                The idea to be conveyed to the readers is: "Hey, look at what I thought of/suggested about this topic, 3/5/7 years ago. I had predicted this! I had offered a solution for this." Reflect on the relevance of the quoted paragraph to the current topic in detail in first person perspespective.
+                (The core idea I want to convey is this — take a moment to notice that I had brought up this thought or suggestion on the topic years ago, whether it was three, five, or even seven years back. I had already predicted this outcome or challenge, and I had even proposed a solution at the time. Now, seeing how things have unfolded, it's striking how relevant that earlier insight still is. Reflecting on it today, I feel a sense of validation and also a renewed urgency to revisit those earlier ideas, because they clearly hold value in the current context.)
                 (two blank lines here)
         5. Call to Action: (Address a specific audience or authority mentioned in the article. Provide a clear and actionable call to action.)
         (two blank lines here)
